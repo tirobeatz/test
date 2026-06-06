@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO & Social-Meta-Tags -->
+  <title>Café Lumière — Kaffee, Licht & gute Momente in Luxemburg</title>
+  <meta name="description" content="Café Lumière: handgerösteter Kaffee, frisches Gebäck und ein lichtdurchfluteter Ort zum Verweilen mitten in Luxemburg-Stadt." />
+  <meta property="og:title" content="Café Lumière" />
+  <meta property="og:description" content="Handgerösteter Kaffee, frisches Gebäck und gute Momente." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Favicon: kleines Inline-SVG (Kaffeetasse-Symbol als Datei-URI) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E" />
+
+  <!-- Schriften: Poppins (Headlines) + Inter (Fließtext) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ======================= HEADER / NAVIGATION ======================= -->
+  <header class="site-header" id="header">
+    <div class="container nav-inner">
+      <a href="#hero" class="logo" aria-label="Café Lumière — Startseite">
+        <!-- Inline-SVG Icon: stilisierte Sonne/Licht -->
+        <svg class="logo-mark" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"></path>
+        </svg>
+        <span>Café Lumière</span>
+      </a>
+
+      <!-- Hauptnavigation -->
+      <nav class="nav" id="nav" aria-label="Hauptnavigation">
+        <a href="#menu">Menü</a>
+        <a href="#about">Über uns</a>
+        <a href="#hours">Öffnungszeiten</a>
+        <a href="#contact">Kontakt</a>
+        <a href="#contact" class="btn btn-small nav-cta">Tisch reservieren</a>
+      </nav>
+
+      <!-- Mobile-Menü-Button (toggelt die Navigation per JS) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================= HERO ============================= -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <p class="eyebrow" data-reveal>Mitten in Luxemburg-Stadt</p>
+        <h1 data-reveal>Wo Licht,<br />Kaffee &amp; Ruhe<br />sich begegnen.</h1>
+        <p class="hero-lead" data-reveal>
+          Handgerösteter Kaffee, frisch gebackenes Gebäck und ein lichtdurchfluteter
+          Raum zum Durchatmen. Komm vorbei und bleib ein bisschen länger.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a href="#menu" class="btn">Menü entdecken</a>
+          <a href="#contact" class="btn btn-ghost">So findest du uns</a>
+        </div>
+      </div>
+
+      <!-- Dezenter Scroll-Hinweis -->
+      <a href="#menu" class="scroll-hint" aria-label="Nach unten scrollen">
+        <span>Scroll</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 5v14M19 12l-7 7-7-7"></path>
+        </svg>
+      </a>
+    </section>
+
+    <!-- ======================= MENÜ-HIGHLIGHTS ======================= -->
+    <section class="section" id="menu">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Unsere Lieblinge</p>
+          <h2>Menü-Highlights</h2>
+          <p class="section-sub">Täglich frisch zubereitet — eine kleine Auswahl aus unserer Karte.</p>
+        </header>
+
+        <div class="menu-grid">
+          <!-- Karte 1 -->
+          <article class="menu-card" data-reveal>
+            <div class="menu-img">
+              <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80"
+                   alt="Cappuccino mit Latte-Art in einer hellen Tasse" loading="lazy" width="600" height="400" />
+            </div>
+            <div class="menu-body">
+              <div class="menu-row">
+                <h3>Signature Cappuccino</h3>
+                <span class="price">3,80 €</span>
+              </div>
+              <p>Hauseigene Röstung, samtiger Milchschaum, ein Hauch Kakao obenauf.</p>
+            </div>
+          </article>
+
+          <!-- Karte 2 -->
+          <article class="menu-card" data-reveal>
+            <div class="menu-img">
+              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
+                   alt="Frisch gebackenes Sauerteigbrot und Croissants" loading="lazy" width="600" height="400" />
+            </div>
+            <div class="menu-body">
+              <div class="menu-row">
+                <h3>Butter-Croissant</h3>
+                <span class="price">2,40 €</span>
+              </div>
+              <p>Über Nacht geführt, aus französischer Butter, jeden Morgen ofenfrisch.</p>
+            </div>
+          </article>
+
+          <!-- Karte 3 -->
+          <article class="menu-card" data-reveal>
+            <div class="menu-img">
+              <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80"
+                   alt="Flat White mit feiner Crema von oben fotografiert" loading="lazy" width="600" height="400" />
+            </div>
+            <div class="menu-body">
+              <div class="menu-row">
+                <h3>Flat White</h3>
+                <span class="price">4,20 €</span>
+              </div>
+              <p>Doppelter Espresso, fein texturierte Milch — kräftig und ausbalanciert.</p>
+            </div>
+          </article>
+
+          <!-- Karte 4 -->
+          <article class="menu-card" data-reveal>
+            <div class="menu-img">
+              <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80"
+                   alt="Stück hausgemachter Karottenkuchen auf einem Teller" loading="lazy" width="600" height="400" />
+            </div>
+            <div class="menu-body">
+              <div class="menu-row">
+                <h3>Karottenkuchen</h3>
+                <span class="price">4,50 €</span>
+              </div>
+              <p>Saftig, mit Frischkäse-Topping und gerösteten Walnüssen.</p>
+            </div>
+          </article>
+
+          <!-- Karte 5 -->
+          <article class="menu-card" data-reveal>
+            <div class="menu-img">
+              <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80"
+                   alt="Glas Cold Brew Kaffee mit Eiswürfeln" loading="lazy" width="600" height="400" />
+            </div>
+            <div class="menu-body">
+              <div class="menu-row">
+                <h3>Cold Brew</h3>
+                <span class="price">4,00 €</span>
+              </div>
+              <p>18 Stunden kalt extrahiert — mild, schokoladig, ohne Bitterstoffe.</p>
+            </div>
+          </article>
+
+          <!-- Karte 6 -->
+          <article class="menu-card" data-reveal>
+            <div class="menu-img">
+              <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=600&q=80"
+                   alt="French Toast mit frischen Beeren und Puderzucker" loading="lazy" width="600" height="400" />
+            </div>
+            <div class="menu-body">
+              <div class="menu-row">
+                <h3>Brioche French Toast</h3>
+                <span class="price">9,80 €</span>
+              </div>
+              <p>Mit Ahornsirup, frischen Beeren und einem Klecks Vanillequark.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ÜBER UNS ============================ -->
+    <section class="section section-alt" id="about">
+      <div class="container about-grid">
+        <div class="about-media" data-reveal>
+          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80"
+               alt="Helles, gemütliches Café-Interieur mit großen Fenstern und Pflanzen" loading="lazy" width="800" height="600" />
+        </div>
+        <div class="about-text" data-reveal>
+          <p class="eyebrow">Über uns</p>
+          <h2>Ein kleiner Ort voller Licht</h2>
+          <p>
+            Café Lumière entstand 2019 aus einer einfachen Idee: einen Raum schaffen,
+            in dem man zur Ruhe kommt. Große Fenster, viel Tageslicht, ehrlicher Kaffee.
+          </p>
+          <p>
+            Unsere Bohnen rösten wir in kleinen Chargen selbst, unser Gebäck backen wir
+            jeden Morgen frisch. Wir glauben an Qualität ohne Hektik — und an Gäste,
+            die zu Stammgästen werden.
+          </p>
+
+          <!-- Kleine Kennzahlen / Vertrauensanker -->
+          <ul class="stats">
+            <li>
+              <strong>2019</strong>
+              <span>gegründet</span>
+            </li>
+            <li>
+              <strong>12+</strong>
+              <span>Kaffee-Sorten</span>
+            </li>
+            <li>
+              <strong>100 %</strong>
+              <span>hausgeröstet</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= ÖFFNUNGSZEITEN ========================= -->
+    <section class="section" id="hours">
+      <div class="container hours-grid">
+        <div class="hours-text" data-reveal>
+          <p class="eyebrow">Wann wir da sind</p>
+          <h2>Öffnungszeiten</h2>
+          <p class="section-sub">
+            Wir freuen uns auf deinen Besuch — am besten zur ruhigen Vormittagsstunde
+            oder zum Nachmittagskaffee.
+          </p>
+        </div>
+
+        <div class="hours-card" data-reveal>
+          <ul class="hours-list">
+            <li><span>Montag – Freitag</span><span class="time">07:30 – 18:00</span></li>
+            <li><span>Samstag</span><span class="time">08:30 – 18:00</span></li>
+            <li><span>Sonntag</span><span class="time">09:00 – 16:00</span></li>
+            <li class="closed"><span>Feiertage</span><span class="time">geschlossen</span></li>
+          </ul>
+          <p class="hours-note">Küche bis 30 Minuten vor Schließung.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ KONTAKT ============================ -->
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Kontakt</p>
+          <h2>Komm vorbei</h2>
+          <p class="section-sub">Fragen, Reservierungen oder einfach Hallo sagen — wir sind für dich da.</p>
+        </header>
+
+        <div class="contact-grid">
+          <!-- Kontaktdaten -->
+          <div class="contact-info" data-reveal>
+            <div class="contact-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <div>
+                <h3>Adresse</h3>
+                <p>12, Rue du Soleil<br />1234 Luxemburg-Stadt</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <div>
+                <h3>Telefon</h3>
+                <p><a href="tel:+35226123456">+352 26 12 34 56</a></p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path>
+              </svg>
+              <div>
+                <h3>E-Mail</h3>
+                <p><a href="mailto:hallo@cafe-lumiere.lu">hallo@cafe-lumiere.lu</a></p>
+              </div>
+            </div>
+
+            <a href="mailto:hallo@cafe-lumiere.lu" class="btn">Schreib uns</a>
+          </div>
+
+          <!-- Karte (eingebettete Standortkarte) -->
+          <div class="contact-map" data-reveal>
+            <iframe
+              title="Standort von Café Lumière auf der Karte"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=6.1200%2C49.6080%2C6.1380%2C49.6160&layer=mapnik&marker=49.6120%2C6.1290"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================= FOOTER ============================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="#hero" class="logo logo-footer">
+        <svg class="logo-mark" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"></path>
+        </svg>
+        <span>Café Lumière</span>
+      </a>
+      <p class="footer-tagline">Kaffee, Licht &amp; gute Momente.</p>
+      <p class="footer-copy">© 2026 Café Lumière · 12, Rue du Soleil, Luxemburg</p>
+    </div>
+  </footer>
+
+  <!-- ===== Bibliotheken per CDN (GSAP, ScrollTrigger, Lenis) ===== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>

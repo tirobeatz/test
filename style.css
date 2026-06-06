@@ -1,0 +1,337 @@
+/* =================================================================
+   Café Lumière — Stylesheet
+   Aufbau: 1) Variablen  2) Reset/Basis  3) Layout-Helfer
+           4) Buttons  5) Header  6) Hero  7) Sektionen
+           8) Footer  9) Animationen/Reduced-Motion  10) Responsive
+   ================================================================= */
+
+/* ----------------------- 1) CSS-Variablen ----------------------- */
+:root {
+  /* Farben: EINE Akzentfarbe (warmes Karamell) + Neutraltöne */
+  --accent:        #b8763e;   /* Karamell/Amber — "Lumière" = warmes Licht */
+  --accent-dark:   #9c5f2d;   /* dunkler für Hover */
+  --bg:            #faf6f0;   /* Creme-Hintergrund */
+  --bg-alt:        #f2e9dc;   /* leicht abgesetzte Sektionen */
+  --surface:       #ffffff;   /* Karten */
+  --text:          #2b2420;   /* dunkles Espresso-Braun */
+  --muted:         #6f6258;   /* sekundärer Text */
+  --border:        rgba(43, 36, 32, 0.10);
+
+  /* Schriften */
+  --font-head: "Poppins", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* Abstände & Form */
+  --space:   clamp(4rem, 9vw, 7.5rem);  /* vertikaler Sektionsabstand */
+  --radius:  16px;
+  --maxw:    1140px;
+
+  --shadow:   0 10px 30px rgba(43, 36, 32, 0.08);
+  --shadow-h: 0 18px 44px rgba(43, 36, 32, 0.14);
+}
+
+/* ----------------------- 2) Reset / Basis ----------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+/* Wenn Lenis aktiv ist, übernimmt JS das Scrollen — native Smooth abschalten */
+html.lenis { scroll-behavior: auto; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Sichtbarer Fokus für Tastatur-Navigation (Accessibility) */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ----------------------- 3) Layout-Helfer ----------------------- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+.section { padding-block: var(--space); }
+.section-alt { background: var(--bg-alt); }
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-head { max-width: 620px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); text-align: center; }
+.section-head h2,
+.about-text h2,
+.hours-text h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+.section-sub { color: var(--muted); margin-top: 0.85rem; font-size: 1.05rem; }
+
+/* ----------------------- 4) Buttons ----------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: 0.98rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--border); }
+.btn-ghost:hover { background: rgba(43, 36, 32, 0.05); border-color: var(--text); }
+
+.btn-small { padding: 0.6rem 1.15rem; font-size: 0.9rem; }
+
+/* ----------------------- 5) Header / Navigation ----------------------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  padding-block: 1.1rem;
+  transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+/* Klasse wird per JS beim Scrollen gesetzt */
+.site-header.scrolled {
+  background: rgba(250, 246, 240, 0.85);
+  backdrop-filter: blur(10px);
+  padding-block: 0.65rem;
+  box-shadow: 0 1px 0 var(--border);
+}
+
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.18rem;
+}
+.logo-mark { color: var(--accent); flex-shrink: 0; }
+
+.nav { display: flex; align-items: center; gap: 1.8rem; }
+.nav a { font-size: 0.97rem; color: var(--text); transition: color 0.2s ease; }
+.nav a:not(.nav-cta):hover { color: var(--accent); }
+
+/* Mobile-Menü-Button (auf Desktop versteckt) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px; height: 44px;
+  background: none; border: none; cursor: pointer;
+}
+.nav-toggle span {
+  display: block; height: 2px; width: 24px;
+  background: var(--text); border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ----------------------- 6) Hero ----------------------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(100deg, rgba(250,246,240,0.96) 0%, rgba(250,246,240,0.72) 42%, rgba(250,246,240,0.25) 100%),
+    url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+  z-index: -1;
+}
+.hero-content { padding-top: 6rem; max-width: 720px; }
+
+.hero h1 {
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-weight: 700;
+  margin: 0.4rem 0 1.3rem;
+}
+.hero-lead { font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--muted); max-width: 38ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.2rem; }
+
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: inline-flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+}
+.scroll-hint svg { animation: bob 1.8s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+/* ----------------------- 7a) Menü-Grid ----------------------- */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.6rem;
+}
+.menu-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.menu-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-h); }
+.menu-img { aspect-ratio: 3 / 2; overflow: hidden; }
+.menu-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.menu-card:hover .menu-img img { transform: scale(1.06); }
+.menu-body { padding: 1.3rem 1.4rem 1.5rem; }
+.menu-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.menu-row h3 { font-size: 1.15rem; }
+.price { font-family: var(--font-head); font-weight: 600; color: var(--accent); white-space: nowrap; }
+.menu-body p { color: var(--muted); font-size: 0.95rem; margin-top: 0.4rem; }
+
+/* ----------------------- 7b) Über uns ----------------------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.about-media img { border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.about-text p { color: var(--muted); margin-top: 1rem; max-width: 52ch; }
+.about-text h2 { margin-bottom: 0.5rem; }
+
+.stats { list-style: none; display: flex; flex-wrap: wrap; gap: 2.4rem; margin-top: 2.2rem; }
+.stats strong { display: block; font-family: var(--font-head); font-size: 1.8rem; color: var(--text); }
+.stats span { font-size: 0.85rem; color: var(--muted); }
+
+/* ----------------------- 7c) Öffnungszeiten ----------------------- */
+.hours-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+.hours-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(1.6rem, 4vw, 2.4rem);
+}
+.hours-list { list-style: none; }
+.hours-list li {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.hours-list li:last-child { border-bottom: none; }
+.hours-list .time { font-family: var(--font-head); font-weight: 500; }
+.hours-list .closed { color: var(--muted); }
+.hours-note { margin-top: 1.2rem; font-size: 0.9rem; color: var(--muted); }
+
+/* ----------------------- 7d) Kontakt ----------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+.contact-item { display: flex; gap: 1rem; margin-bottom: 1.6rem; }
+.contact-item svg { color: var(--accent); flex-shrink: 0; margin-top: 0.2rem; }
+.contact-item h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+.contact-item p { color: var(--muted); }
+.contact-item a:hover { color: var(--accent); }
+.contact-info .btn { margin-top: 0.5rem; }
+
+.contact-map {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  min-height: 320px;
+  border: 1px solid var(--border);
+}
+.contact-map iframe { width: 100%; height: 100%; min-height: 320px; border: 0; display: block; }
+
+/* ----------------------- 8) Footer ----------------------- */
+.site-footer {
+  background: var(--text);
+  color: #f3ece1;
+  padding-block: clamp(2.5rem, 5vw, 3.5rem);
+}
+.footer-inner { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; text-align: center; }
+.logo-footer { color: #fff; font-size: 1.25rem; }
+.footer-tagline { color: #d8c9b8; }
+.footer-copy { font-size: 0.85rem; color: #a89684; margin-top: 0.4rem; }
+
+/* ----------------------- 9) Scroll-Reveal & Reduced-Motion ----------------------- */
+/* Startzustand der zu animierenden Elemente — nur wenn JS/GSAP läuft */
+.js-reveal [data-reveal] { opacity: 0; transform: translateY(24px); }
+
+/* Nutzer, die Bewegung reduziert haben wollen: alles sofort sichtbar, keine Effekte */
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .scroll-hint svg { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ----------------------- 10) Responsive (ab Tablet/Desktop) ----------------------- */
+@media (min-width: 760px) {
+  .about-grid { grid-template-columns: 1fr 1fr; }
+  .hours-grid { grid-template-columns: 1fr 1.1fr; }
+  .contact-grid { grid-template-columns: 1fr 1.2fr; }
+}
+
+/* Mobile-Navigation: unter 860px klappt das Menü als Panel auf */
+@media (max-width: 860px) {
+  .nav-toggle { display: flex; }
+
+  .nav {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(78vw, 320px);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.6rem;
+    padding: 2rem 2.2rem;
+    background: var(--bg);
+    box-shadow: -10px 0 40px rgba(43, 36, 32, 0.15);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav.open { transform: translateX(0); }
+  .nav a { font-size: 1.15rem; }
+  .nav-cta { margin-top: 0.5rem; }
+
+  /* Hamburger -> X, wenn geöffnet */
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
