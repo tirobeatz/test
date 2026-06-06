@@ -1,0 +1,5 @@
+# Vercel (lokale Projekt-Verknüpfung — gehört nicht ins Repo)
+.vercel
+
+# macOS
+.DS_Store
